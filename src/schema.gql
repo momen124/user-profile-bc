@@ -1,0 +1,96 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type LocalizedName {
+  firstName: String!
+  fatherName: String!
+  grandfatherName: String!
+  familyName: String!
+}
+
+type NationalId {
+  idNumber: String!
+  expiryDate: String!
+}
+
+type Country {
+  id: Int!
+  name: String!
+}
+
+type Nationality {
+  country: Country!
+  countryId: Int!
+}
+
+type MaritalStatus {
+  id: Int!
+  name: String!
+}
+
+type UserType {
+  id: Int!
+  firstName: String!
+  fatherName: String!
+  grandfatherName: String!
+  familyName: String!
+  localizedName: LocalizedName!
+  nationalId: NationalId!
+  nationalities: [Nationality!]!
+  maritalStatus: MaritalStatus!
+  dependants: String!
+}
+
+type UpdateUserBasicInfoPayload {
+  id: Int!
+  firstName: String!
+  fatherName: String!
+  grandfatherName: String!
+  familyName: String!
+  localizedName: LocalizedName!
+  nationalId: NationalId!
+  nationalities: [Nationality!]!
+  maritalStatus: MaritalStatus!
+  dependants: String!
+}
+
+type Query {
+  user(id: Int!): UserType!
+}
+
+type Mutation {
+  updateUserBasicInfo(id: Int!, input: UpdateUserBasicInfoInput!): UpdateUserBasicInfoPayload!
+}
+
+input UpdateUserBasicInfoInput {
+  firstName: String!
+  fatherName: String!
+  grandfatherName: String!
+  familyName: String!
+  localizedName: LocalizedNameInput!
+  nationalId: NationalIdInput!
+  nationalities: [NationalityInput!]!
+  maritalStatus: MaritalStatusInput!
+  dependants: String!
+}
+
+input LocalizedNameInput {
+  firstName: String!
+  fatherName: String!
+  grandfatherName: String!
+  familyName: String!
+}
+
+input NationalIdInput {
+  idNumber: String!
+  expiryDate: String!
+}
+
+input NationalityInput {
+  countryId: Int!
+}
+
+input MaritalStatusInput {
+  id: Int!
+}

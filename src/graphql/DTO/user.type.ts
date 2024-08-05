@@ -21,7 +21,7 @@ class NationalId {
   idNumber: string;
 
   @Field()
-  expiryDate: string;
+  expiryDate: string; // Keep as string if Date is not supported
 }
 
 @ObjectType()
@@ -82,37 +82,22 @@ export class UserType {
 
   @Field()
   dependants: string;
-}
 
-@ObjectType()
-export class UpdateUserBasicInfoPayload {
-  @Field(() => Int)
-  id: number;
+  @Field({ nullable: true })
+  employmentCode?: string;
 
-  @Field()
-  firstName: string;
+  @Field({ nullable: true })
+  title?: string;
 
-  @Field()
-  fatherName: string;
+  @Field({ nullable: true })
+  gender?: string;
 
-  @Field()
-  grandfatherName: string;
+  @Field({ nullable: true })
+  passportNumber?: string;
 
-  @Field()
-  familyName: string;
+  @Field({ nullable: true })
+  passportIssueDate?: string;
 
-  @Field(() => LocalizedName)
-  localizedName: LocalizedName;
-
-  @Field(() => NationalId)
-  nationalId: NationalId;
-
-  @Field(() => [Nationality])
-  nationalities: Nationality[];
-
-  @Field(() => MaritalStatus)
-  maritalStatus: MaritalStatus;
-
-  @Field()
-  dependants: string;
+  @Field({ nullable: true })
+  passportExpiryDate?: string;
 }

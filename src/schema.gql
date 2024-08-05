@@ -40,19 +40,12 @@ type UserType {
   nationalities: [Nationality!]!
   maritalStatus: MaritalStatus!
   dependants: String!
-}
-
-type UpdateUserBasicInfoPayload {
-  id: Int!
-  firstName: String!
-  fatherName: String!
-  grandfatherName: String!
-  familyName: String!
-  localizedName: LocalizedName!
-  nationalId: NationalId!
-  nationalities: [Nationality!]!
-  maritalStatus: MaritalStatus!
-  dependants: String!
+  employmentCode: String
+  title: String
+  gender: String
+  passportNumber: String
+  passportIssueDate: String
+  passportExpiryDate: String
 }
 
 type Query {
@@ -60,26 +53,24 @@ type Query {
 }
 
 type Mutation {
-  updateUserBasicInfo(id: Int!, input: UpdateUserBasicInfoInput!): UpdateUserBasicInfoPayload!
+  updateUser(id: Int!, input: UpdateUserInput!): UserType!
 }
 
-input UpdateUserBasicInfoInput {
-  firstName: String!
-  fatherName: String!
-  grandfatherName: String!
-  familyName: String!
-  localizedName: LocalizedNameInput!
-  nationalId: NationalIdInput!
-  nationalities: [NationalityInput!]!
-  maritalStatus: MaritalStatusInput!
-  dependants: String!
-}
-
-input LocalizedNameInput {
-  firstName: String!
-  fatherName: String!
-  grandfatherName: String!
-  familyName: String!
+input UpdateUserInput {
+  nationalId: NationalIdInput
+  employmentCode: String
+  title: String
+  firstName: String
+  fatherName: String
+  grandfatherName: String
+  familyName: String
+  gender: String
+  nationalities: [NationalityInput]
+  passportNumber: String
+  maritalStatus: MaritalStatusInput
+  dependants: String
+  militaryStatus: MilitaryStatusInput
+  localizedName: LocalizedNameInput
 }
 
 input NationalIdInput {
@@ -93,4 +84,16 @@ input NationalityInput {
 
 input MaritalStatusInput {
   id: Int!
+  name: String!
+}
+
+input MilitaryStatusInput {
+  name: String!
+}
+
+input LocalizedNameInput {
+  firstName: String
+  fatherName: String
+  grandfatherName: String
+  familyName: String
 }

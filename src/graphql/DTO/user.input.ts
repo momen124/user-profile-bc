@@ -6,7 +6,7 @@ export class NationalIdInput {
   idNumber: string;
 
   @Field()
-  expiryDate: string;
+  expiryDate: string; // Changed from Date to string for simplicity
 }
 
 @InputType()
@@ -59,36 +59,12 @@ export class UpdateUserInput {
   @Field(() => [NationalityInput], { nullable: 'items' })
   nationalities?: NationalityInput[];
 
-  @Field({ nullable: true })
-  passportNumber?: string;
+  @Field(() => Int, { nullable: true }) // Changed from string to Int
+  passportNumber?: number;
 
   @Field(() => MaritalStatusInput, { nullable: true })
   maritalStatus?: MaritalStatusInput;
 
   @Field({ nullable: true })
   dependants?: string;
-
-  @Field({ nullable: true })
-  email?: string;
-
-  @Field({ nullable: true })
-  phone?: string;
-
-  @Field({ nullable: true })
-  emergencyContactName?: string;
-
-  @Field({ nullable: true })
-  emergencyContactPhone?: string;
-
-  @Field({ nullable: true })
-  address?: string;
-
-  @Field({ nullable: true })
-  drivingLicenseNumber?: string;
-
-  @Field({ nullable: true })
-  drivingLicenseExpiry?: string;
-
-  @Field(() => MilitaryStatusInput, { nullable: true })
-  militaryStatus?: MilitaryStatusInput;
 }
